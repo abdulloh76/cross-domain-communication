@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Third domain</h1>
+    <h1>
+      It is running in <a href="http://localhost:8080">http://localhost:8080</a>
+    </h1>
+    <script>
+      function test() {
+        var firstDomain = window.frames.firstDomain;
+        firstDomain.postMessage("I AM ATTACKER", "*");
+      }
+    </script>
+    <iframe
+      style="background-color: bisque"
+      width="560"
+      height="315"
+      onload="test()"
+      id="my-frame"
+      name="firstDomain"
+      src="http://localhost:9000"
+      frameborder="0"
+    ></iframe>
+
+    <iframe
+      style="background-color: bisque"
+      width="560"
+      height="315"
+      id="akshayCORS"
+      src="https://youtu.be/tcLW5d0KAYE"
+      frameborder="0"
+    ></iframe>
+
+    <iframe
+      style="background-color: bisque"
+      width="560"
+      height="315"
+      onload="test()"
+      id="you-frame"
+      src="https://www.youtube.com/embed/tcLW5d0KAYE"
+      title="YouTube video player"
+      frameborder="0"
+    ></iframe>
+  </body>
+</html>

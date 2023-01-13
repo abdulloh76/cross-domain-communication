@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>First domain</h1>
+    <h1>
+      It is running in <a href="http://localhost:9000">http://localhost:9000</a>
+    </h1>
+
+    <script>
+      function receiveMessage(event) {
+        // if (event.origin.indexOf("www.domain.local") > 0) is wrong
+        // www.domain.local.whatever.local can pass this which is not actually same origin
+        if (event.origin === "http://localhost:8080") {
+          alert("communication with this domain is restricted");
+          return;
+        }
+        eval(event.data);
+        alert(event.data);
+      }
+      window.addEventListener("message", receiveMessage, false);
+    </script>
+  </body>
+</html>
